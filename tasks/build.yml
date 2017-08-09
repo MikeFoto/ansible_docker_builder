@@ -1,0 +1,55 @@
+
+- set_fact:
+    image_list:
+      - "{{ docker_builder | json_query(  build_query)  }}"
+  vars:
+    build_query: "build.images_to_build[*].{
+        name: image_name,
+        repo: repo,
+        tag: tag,
+        build: build,
+        script: script
+        base_image: base_image
+        files: files
+        }"
+
+- name: create dirs to Dockerfile - images to build
+  file:
+     path:  "{{ docker_builder.build.build_path }}/{{ item.name }}"
+     state: directory
+     mode:  0777
+  with_items:  "{{ image_list }}"
+  when: item.build == True
+
+- name: Template Dockerfile for images to build
+  template:
+     src:  Dockerfile.j2
+     dest: "{{ docker_builder.build.build_path }}/{{ item.name }}/Dockerfile"
+  with_items:  "{{ image_list }}"
+  when: item.build == True
+
+
+- name: Generate the necessary files(1)
+  set_fact:
+    files_to_generate: []
+
+- name: Generate the necessary files (2)
+  set_fact:
+    files_to_generate: "{{ files_to_generate +    item.files  }}"
+  with_items:  "{{ image_list }}"
+  when: item.build == True
+
+- name: Generate the necessary files (3)
+  copy:
+     dest:  "{{ docker_builder.build.build_path }}/{{ item.location }}/{{ item.name }}"
+     content: "{{ item.cnt }}"
+  with_items:  "{{ files_to_generate }}"
+
+- name: Build image and with buildargs
+  docker_image:
+     path:  "{{ docker_builder.build.build_path }}/{{ item.name }}"
+     name: "{{ item.repo }}/{{ item.name }}"
+     tag:  "{{ item.tag }}"
+     pull: False
+  with_items:  "{{ image_list }}"
+  when: item.build == True

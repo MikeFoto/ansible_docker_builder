@@ -1,0 +1,7 @@
+
+- name: pull base image
+  docker_image:
+    name:       "{{ item.value.name }}"
+    tag:        "{{ item.value.version }}"
+    state:      present
+  with_dict:  "{{ docker_builder.pull.base_images  }}"
