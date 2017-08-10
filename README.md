@@ -1,7 +1,7 @@
 # Simple docker pull and build module
 
  * Allow to download arbitray number of images from any docker repo
- * Build arbitrary number of images, with configurable script content and arbitrary number of file s to upload to the image 
+ * Build arbitrary number of images, with configurable script content and arbitrary number of files to upload to the image 
 
 # Requirements
 

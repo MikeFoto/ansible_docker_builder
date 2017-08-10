@@ -1,8 +1,3 @@
-docker_builder_aux:
-  repo:      "ansible_my_repo"
-  img_names:
-    webserver: "webserver_img"
-    loadb:     "loadbalan_img"
 
 docker_builder:
   pull:
@@ -12,9 +7,6 @@ docker_builder:
         version: "6.8"                            # image version
         docker_host: "unix://var/run/docker.sock" # optional a host to download
                                                   #  an image
-      centoslatest:
-        name:    centos
-        version: "latest"
   build:
     build_path:   "../tmp"                      # Where images are built
     images_to_build:
