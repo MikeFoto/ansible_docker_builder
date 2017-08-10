@@ -6,7 +6,7 @@ docker_builder_aux:
 
 docker_builder:
   pull:
-    base_images:
+    base_images:                                  # List of images to download
       centos68:
         name:    centos                           # image name
         version: "6.8"                            # image version
