@@ -8,8 +8,10 @@ docker_builder:
   pull:
     base_images:
       centos68:
-        name:    centos
-        version: "6.8"
+        name:    centos                           # image name
+        version: "6.8"                            # image version
+        docker_host: "unix://var/run/docker.sock" # optional a host to download
+                                                  #  an image
       centos69:
         name:    centos
         version: "6.9"

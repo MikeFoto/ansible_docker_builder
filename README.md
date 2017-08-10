@@ -3,3 +3,7 @@
 # Requirements
 
 just [docker_image requirements](http://docs.ansible.com/ansible/latest/docker_image_module.html).
+
+# Usage
+
+Replace the defaults in defaults/main.yml
