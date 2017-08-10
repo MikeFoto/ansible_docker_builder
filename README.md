@@ -7,3 +7,11 @@ just [docker_image requirements](http://docs.ansible.com/ansible/latest/docker_i
 # Usage
 
 Replace the defaults in defaults/main.yml
+
+# License
+
+MIT
+
+# Author Information
+
+Created by Miguel Rodrigues
