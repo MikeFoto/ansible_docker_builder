@@ -27,7 +27,7 @@ docker_builder:
         version: "latest"
   build:
     build_path:   "../tmp"                      # Where images are built
-    images_to_build:                            # List of images to build 
+    images_to_build:                            # List of images to build
       - image_name: webserver
         build:      True                        # If build is done
         base_image:                             # Base image for this build
@@ -39,14 +39,13 @@ docker_builder:
         files:                                   # File list to be created on
                                                  #  the image
           - name:     index1.html
-            location: "webserver"                             # local file name
-            dst:      /var/www/html/index1.html               # File location on the image
-            cnt: |                                            # File content
+            location: "webserver"                # local file name
+            dst:      /var/www/html/index1.html  # File location on the image
+            cnt: |                               # File content
               <h1>
                 default index page from ansible (1)
               </h1>
-        script: |                                       # scrip to be included
-                                                        #  in the Dockerfile
+        script: |                       # scrip to be included in the Dockerfile
           # httpd
           RUN yum -y  install httpd
           #
