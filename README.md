@@ -13,48 +13,40 @@ Define the Configuration hash some place . Check Examples at defaults.yml.ex
 
 ```yaml
 
+
 docker_builder:
   pull:
-    base_images:
-      centos66:
-        name:    centos
-        version: "6.6"
-      centos69:
-        name:    centos
-        version: "6.9"
+    base_images:                                  # List of images to download
+      centos68:
+        name:    centos                           # image name
+        version: "6.8"                            # image version
+        docker_host: "unix://var/run/docker.sock" # optional a host to download
+                                                  #  an image
       centoslatest:
         name:    centos
         version: "latest"
-      ubuntults:
-        name:    ubuntu
-        version: "14.04"
   build:
-    build_path:   "../tmp"
+    build_path:   "../tmp"                      # Where images are built
     images_to_build:
       - image_name: webserver
-        build:      True
-        base_image:
+        build:      True                        # If build is done
+        base_image:                             # Base image for this build
           name:     centos
           version:  "6.9"
-        name:       "{{ docker_builder_aux.img_names.webserver }}"
-        repo:       "{{ docker_builder_aux.repo }}"
-        tag:        "v0.08"
-        files:
+        name:       MyImage_Name                 # Name to this image
+        repo:       My_Repo                      # Repo for this image
+        tag:        "v0.08"                      # Image Tag
+        files:                                   # File list to be created on
+                                                 #  the image
           - name:     index1.html
-            location: "webserver"
-            dst:      /var/www/html/index1.html
-            cnt: |
+            location: "webserver"                             # local file name
+            dst:      /var/www/html/index1.html               # File location on the image
+            cnt: |                                            # File content
               <h1>
                 default index page from ansible (1)
               </h1>
-          - name:     index2.html
-            location: "webserver"
-            dst:      /var/www/html/index2.html
-            cnt: |
-              <h1>
-                default index page from ansible (2)
-              </h1>
-        script: |
+        script: |                                       # scrip to be included
+                                                        #  in the Dockerfile
           # httpd
           RUN yum -y  install httpd
           #
@@ -62,26 +54,6 @@ docker_builder:
           RUN yum -y  install php
           ADD index1.html /var/www/html/index.html
           CMD ["/usr/sbin/apachectl", "-DFOREGROUND"]
-      - image_name: loadb
-        build:      True
-        base_image:
-          name:     centos
-          version:  "latest"
-        name:       "{{ docker_builder_aux.img_names.loadb}}"
-        repo:       "{{ docker_builder_aux.repo }}"
-        tag:        "v0.05"
-        files:
-          - name:     index3.html
-            location: "loadb"
-            dst:      /var/www/html/index3.html
-            cnt: |
-              <h1>
-                default index page from ansible (3)
-              </h1>
-        script: |
-          # line 1 of script ( latest )
-          # ....
-          # last line of script
 
 ```
 
