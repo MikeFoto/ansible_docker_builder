@@ -27,11 +27,7 @@ docker_builder:
       centoslatest:
         name:    centos
         version: "latest"
-  build:
-    build_path:   "../tmp"                      # Where images are built
-    images_to_build:                            # List of images to build
-      - image_name: webserver
-        build:      True                        # If build is done
+  build:uild:      True                        # If build is done
         base_image:                             # Base image for this build
           name:     centos
           version:  "6.9"
