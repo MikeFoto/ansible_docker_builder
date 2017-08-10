@@ -8,8 +8,10 @@ docker_builder:
   pull:
     base_images:
       centos68:
-        name:    centos
-        version: "6.8"
+        name:    centos                           # image name
+        version: "6.8"                            # image version
+        docker_host: "unix://var/run/docker.sock" # optional a host to download
+                                                  #  an image
       centos69:
         name:    centos
         version: "6.9"
@@ -20,10 +22,10 @@ docker_builder:
         name:    ubuntu
         version: "14.04"
   build:
-    build_path:   "../tmp"
+    build_path:   "../tmp"                      # Where images are built
     images_to_build:
       - image_name: webserver
-        build:      True
+        build:      True                        # If build is done
         base_image:
           name:     centos
           version:  "6.9"
