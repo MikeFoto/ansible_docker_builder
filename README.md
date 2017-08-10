@@ -1,11 +1,11 @@
 # Simple docker pull and build module
 
  * Allow to download arbitray number of images from any docker repo
- * Build arbitrary number of images, with configurable script content and arbitrary number of files to upload to the image 
+ * Build arbitrary number of images, with configurable script content and arbitrary number of files to upload to the image
 
 # Requirements
 
-just [docker_image requirements](http://docs.ansible.com/ansible/latest/docker_image_module.html).
+[docker_image requirements](http://docs.ansible.com/ansible/latest/docker_image_module.html).
 
 # Usage
 
