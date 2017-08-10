@@ -27,7 +27,7 @@ docker_builder:
         version: "latest"
   build:
     build_path:   "../tmp"                      # Where images are built
-    images_to_build:
+    images_to_build:                            # List of images to build 
       - image_name: webserver
         build:      True                        # If build is done
         base_image:                             # Base image for this build
