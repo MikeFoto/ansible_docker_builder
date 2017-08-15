@@ -5,7 +5,7 @@
 
 # Requirements
 
-[docker_image requirements](http://docs.ansible.com/ansible/latest/docker_image_module.html).
+Just ansible [docker_image requirements](http://docs.ansible.com/ansible/latest/docker_image_module.html).
 
 # Usage
 
