@@ -57,7 +57,7 @@ docker_builder:
 
 # License
 
-MIT
+GNU GPLv3 
 
 # Author Information
 
