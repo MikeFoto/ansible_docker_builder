@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: MikeFoto
+  description:  Simple docker pull and build module. Allow to download arbitray number of images from any docker repo. Build arbitrary number of images, with configurable script content and arbitrary number of files to upload to the image
+  license: GNU General Public License v3.0
+  min_ansible_version: 2.0
+  platforms:
+  - name: EL
+    versions:
+    - all
+  categories:
+  - docker
+  - containers
+dependencies: []
